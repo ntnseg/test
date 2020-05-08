@@ -93,7 +93,7 @@ interface FastEthernet7
 !
 interface FastEthernet8
  description to aaaaaaa
- ip address 100.100.100.100 255.255.255.252
+ ip address 200.200.200.200 255.255.255.252
  ip policy route-map markdown
  duplex auto
  speed auto
@@ -101,7 +101,7 @@ interface FastEthernet8
 !
 interface GigabitEthernet0
  description to bbbbbbb
- ip address 100.100.100.100 255.255.255.252
+ ip address 200.200.200.200 255.255.255.252
  duplex auto
  speed auto
  !
@@ -112,11 +112,11 @@ interface Vlan1
  !
 !
 router ospf 1
- router-id 100.100.100.100
+ router-id 200.200.200.200
  log-adjacency-changes
  passive-interface default
  no passive-interface FastEthernet8
- network 100.100.0.0 0.0.255.255 area 0
+ network 200.200.0.0 0.0.255.255 area 0
  default-information originate metric 100
 !
 no ip forward-protocol nd
@@ -124,10 +124,10 @@ no ip http server
 no ip http secure-server
 !
 !
-ip route 0.0.0.0 0.0.0.0 100.100.100.100 250
+ip route 0.0.0.0 0.0.0.0 200.200.200.200 250
 !
-access-list 100 permit ip 100.100.100.0 0.0.1.255 any precedence critical
-access-list 100 permit ip 100.100.100.0 0.0.1.255 any precedence internet
+access-list 100 permit ip 200.200.100.0 0.0.1.255 any precedence critical
+access-list 100 permit ip 200.200.100.0 0.0.1.255 any precedence internet
 access-list 100 deny   ip any any
 no cdp run
 
@@ -174,6 +174,6 @@ line vty 5 15
  transport input none
 !
 no scheduler max-task-time
-ntp server 100.100.100.100
-ntp server 100.100.100.100
+ntp server 200.200.200.200
+ntp server 200.200.200.200
 end
